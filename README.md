@@ -5,7 +5,7 @@
 ```go get -d github.com/koushik-shetty/number-algo-aggregator```
 
 #### Command List
-in the repo directory
+in the root directory
 ```make help```
 
 #### goversion `1.8` required
