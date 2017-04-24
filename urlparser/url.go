@@ -10,6 +10,7 @@ type QueryURL struct {
 	urls        []string
 }
 
+//New creates a new instance of the QueryURL filtering out the invalid URLs
 func New(rawURL, queryParam string) (*QueryURL, error) {
 	parsedURL, err := url.ParseRequestURI(rawURL)
 	if err != nil {

@@ -10,6 +10,7 @@ help:
 	@echo "build   		=> 'make build'"
 	@echo "run    		=> 'make run'"
 	@echo "testserver 	=> 'make testserver'"
+	@echo "godoc"		=> 'make godoc'
 	@echo "Run the server and the test server in a seperate terminal instance"
 
 test:
@@ -24,6 +25,9 @@ run:
 testserver: 
 	go run testserver/testserver.go
 
+godoc:
+	@echo visit http://localhost:7000/pkg/github.com/koushik-shetty/number-algo-aggregator/
+	godoc -http :7000
 # function test {
 #     go test -v ./...
 # }
