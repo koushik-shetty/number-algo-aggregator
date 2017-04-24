@@ -23,5 +23,5 @@ func New(out io.Writer) *Log {
 
 //Errorf is the interface method
 func (l *Log) Errorf(format string, args ...interface{}) {
-	l.Printf(format, args)
+	l.Printf(format, args...)
 }

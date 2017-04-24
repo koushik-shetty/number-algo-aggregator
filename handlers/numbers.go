@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"time"
@@ -16,6 +15,7 @@ import (
 //Numbers is the handler for the /numbers api
 func Numbers(log logger.Logger) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		log.Errorf("----Start Request\n")
 		start := time.Now()
 		up, err := urlparser.New(r.URL.String(), constants.QUERYPARAM)
 		if err != nil {
@@ -34,6 +34,7 @@ func Numbers(log logger.Logger) http.HandlerFunc {
 		}
 		w.Header().Set("Content-Type", "application/json")
 		w.Write(numbersResponse)
-		fmt.Printf("Latency: %v\n", time.Now().Sub(start))
+		log.Errorf("Latency: %v\n", time.Now().Sub(start))
+		log.Errorf("-----end Request\n\n")
 	})
 }

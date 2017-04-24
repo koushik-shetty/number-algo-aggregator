@@ -1,0 +1,11 @@
+- There is a single endpoint for the numbers `/numbers`
+- The handler extracts the query parameter `u` which represents the urls to the number-algorithm endpoints. There could be multiple of this `u` parameter.
+- When the handler receives this request, it parses the request query and extracts all the numner-algorithm urls and filters the invalid ones out.
+- for each of these URLs a **goroutine** is  created.
+- each goroutine creates a http client, which has a timed context (480ms, with a buffer time).
+- the parent function creates a buffered data channel and error channel and send this to each goroutine. and the parent then selects on the channel for either data or error.
+- the goroutine get the data or errors from service or the request could timeout.
+- the goroutine then signals the parent function with the appropriate message(error or data).
+- the parent function collects this data from each URLs, gets a list with unique integers and sort them and this is sent as the response to the request.
+- all errors are logged and the error endpoint data are excluded from the response.
+- the program also prints the latency for the handler during each request.
